@@ -1,0 +1,1 @@
+This is a game that is work in progress. As of now, the ship moves to left and right with the right arrow and left arrow keys. It also fires bullets when you press the spacebar. You are limited to three bullets at a time in the screen. Once they disappear you can fire more. 
