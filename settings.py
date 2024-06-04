@@ -16,10 +16,10 @@ class Settings:
         # self.fleet_drop_speed = 100
         # How quickly the game speeds up
         self.speedup_scale = 2.0
+        
+        self.initialize_dynamic_settings()
         self.button_width = 200
         self.button_height = 50
-        self.initialize_dynamic_settings()
-        
         
     def initialize_dynamic_settings(self):
         """initialize the settings that change throughout the game."""
