@@ -93,6 +93,7 @@ class AlienInvasion:
             self.settings.initialize_dynamic_settings()
             self.stats.reset_stats()
             self.sb.prep_score()
+            self.sb.prep_level()
             self.game_active=True
             # Get rid of any remaining bullets adn aliens
             self.bullets.empty()
@@ -106,6 +107,8 @@ class AlienInvasion:
             self.settings.initialize_dynamic_settings()
             self.settings.increase_speed()
             self.stats.reset_stats()
+            self.sb.prep_score()
+            self.sb.prep_level()
             self.game_active=True
             # Get rid of any remaining bullets adn aliens
             self.bullets.empty()
@@ -120,6 +123,8 @@ class AlienInvasion:
             self.settings.increase_speed()
             self.settings.increase_speed()
             self.stats.reset_stats()
+            self.sb.prep_score()
+            self.sb.prep_level()
             self.game_active=True
             # Get rid of any remaining bullets adn aliens
             self.bullets.empty()
@@ -158,11 +163,15 @@ class AlienInvasion:
                 # each value is a list of aliens hit by a single bullet
                 self.stats.score += self.settings.alien_points * len(aliens)
             self.sb.prep_score()
+            self.sb.check_high_score()
         if not self.aliens:
             # If/when all the aliens are destroyed, destroy existing bullets and create new fleet.
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+            # increase level
+            self.stats.level += 1
+            self.sb.prep_level()
             
     def _update_aliens(self):
         """Update the postiions of all aliens in teh fleet"""
