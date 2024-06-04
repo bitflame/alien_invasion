@@ -16,7 +16,8 @@ class Settings:
         # self.fleet_drop_speed = 100
         # How quickly the game speeds up
         self.speedup_scale = 2.0
-        
+        # How quickly the alien point values increase
+        self.score_scale = 1.5
         self.initialize_dynamic_settings()
         self.button_width = 200
         self.button_height = 50
@@ -35,4 +36,6 @@ class Settings:
         self.ship_speed *= self.speedup_scale
         self.bullet_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale
+        self.alien_points = int(self.alien_points * self.score_scale)
+        # print(f"increased alien points to {self.alien_points}")
         
