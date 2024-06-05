@@ -1,6 +1,6 @@
 import sys
 from time import sleep
-
+from pathlib import Path
 import pygame
 
 from settings import Settings
@@ -38,7 +38,9 @@ class AlienInvasion:
         self.bg_color = (230, 230, 230)
         # start Alien Invasion in an active state
         self.game_active = False
+        self.path = Path("top_score.txt")
         
+            
     def _ship_hit(self):
         """Respond to ship being hit"""
         if self.stats.ships_left > 0:   
@@ -74,6 +76,8 @@ class AlienInvasion:
         for event in pygame.event.get(): #<- this is called event loop
             # if event in pygame.event.get():
             if event.type == pygame.QUIT:
+                #write the highest score to a file
+                self.path.write_text(str(self.stats.high_score))
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
@@ -251,7 +255,10 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
         elif event.key == pygame.K_q:
+            #write the highest score to a file
+            self.path.write_text(self.stats.high_score)
             sys.exit()
+            
         elif event.key == pygame.K_SPACE:
                 self._fire_bullet()
         elif event.key == pygame.K_p and not self.game_active :
