@@ -96,53 +96,33 @@ class AlienInvasion:
         if  button_clicked and not self.game_active :
             # Reset the game statistics
             self.settings.initialize_dynamic_settings()
-            self.stats.reset_stats()
-            self.sb.prep_score()
-            self.sb.prep_level()
-            self.sb.prep_ships()
-            self.game_active=True
-            # Get rid of any remaining bullets adn aliens
-            self.bullets.empty()
-            self.aliens.empty()
-            # Create a new fleet
-            self._create_fleet()
-            self.ship.center_ship()
-            # Hide the mouse
-            pygame.mouse.set_visible(False)
+            self._create_game_components()
         elif level_one_activated: 
-            self.settings.initialize_dynamic_settings()
             self.settings.increase_speed()
-            self.stats.reset_stats()
-            self.sb.prep_score()
-            self.sb.prep_level()
-            self.game_active=True
-            # Get rid of any remaining bullets adn aliens
-            self.bullets.empty()
-            self.aliens.empty()
-            # Create a new fleet
-            self._create_fleet()
-            self.ship.center_ship()
-            # Hide the mouse
-            pygame.mouse.set_visible(False)
+            self._create_game_components()
         elif level_two_activated: 
-            self.settings.initialize_dynamic_settings()
             self.settings.increase_speed()
             self.settings.increase_speed()
-            self.stats.reset_stats()
-            self.sb.prep_score()
-            self.sb.prep_level()
-            self.game_active=True
-            # Get rid of any remaining bullets adn aliens
-            self.bullets.empty()
-            self.aliens.empty()
-            # Create a new fleet
-            self._create_fleet()
-            self.ship.center_ship()
-            # Hide the mouse
-            pygame.mouse.set_visible(False)
+            self._create_game_components()
             
         
-            
+    def _create_game_components(self):
+    # Reset the game statistics
+        self.settings.initialize_dynamic_settings()
+        self.stats.reset_stats()
+        self.sb.prep_score()
+        self.sb.prep_level()
+        self.sb.prep_ships()
+        self.game_active=True
+        # Get rid of any remaining bullets adn aliens
+        self.bullets.empty()
+        self.aliens.empty()
+        # Create a new fleet
+        self._create_fleet()
+        self.ship.center_ship()
+        # Hide the mouse
+        pygame.mouse.set_visible(False)   
+         
     def _fire_bullet(self):
         """Crete a new bullet and add it to the bullets group."""
         if len(self.bullets) < self.settings.bullets_allowed:
