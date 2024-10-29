@@ -3,7 +3,7 @@ from pygame.sprite import Group
 
 from ship import Ship
 class Scoreboard:
-    """A class to report scoring information"""
+    """A class to report scoring information """
     
     def __init__(self, ai_game):
         """initialize scorekeeping attributes."""
